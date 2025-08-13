@@ -6,14 +6,14 @@ import '../model/signup_model.dart';
 
 class ApiService {
   Future<SignUpModel?> signup(
-      String firstName,
-      String lastName,
-      String email,
-      String gender,
-      String password,
-      String number,
-      String address,
-      ) async {
+    String firstName,
+    String lastName,
+    String email,
+    String gender,
+    String password,
+    String number,
+    String address,
+  ) async {
     var response = await http.post(
       Uri.parse("https://edugaondev.com/firebase-api-main/api/signup"),
       body: {

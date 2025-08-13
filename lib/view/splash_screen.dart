@@ -28,13 +28,13 @@ class _SplaceScreenState extends State<SplaceScreen> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => ProfileScreen()),
-            (rout) => false,
+        (rout) => false,
       );
     } else {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
-            (route) => false,
+        (route) => false,
       );
     }
   }

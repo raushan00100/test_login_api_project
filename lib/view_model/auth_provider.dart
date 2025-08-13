@@ -6,7 +6,6 @@ import 'package:test_login_api_project/view/profile_screen.dart';
 
 import '../services/api_service.dart';
 
-
 class AuthProvider with ChangeNotifier {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -42,7 +41,7 @@ class AuthProvider with ChangeNotifier {
       firstNameController.text.toString(),
       lastNameController.text.toString(),
       emailController.text.toString(),
-      genderController.text.toString(),
+      genderController.text.toString().toLowerCase(),
       passwordController.text.toString(),
       numberController.text.toString(),
       addressController.text.toString(),
@@ -55,8 +54,13 @@ class AuthProvider with ChangeNotifier {
       await prefs.setString("Gender", callUser.data?.gender ?? "");
       await prefs.setString("Number", callUser.data?.number ?? "");
       await prefs.setString("Address", callUser.data?.address ?? "");
+      firstNameController.clear();
+      lastNameController.clear();
       emailController.clear();
+      genderController.clear();
       passwordController.clear();
+      numberController.clear();
+      addressController.clear();
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => LoginScreen()),
@@ -91,7 +95,7 @@ class AuthProvider with ChangeNotifier {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => ProfileScreen()),
-            (route) => false,
+        (route) => false,
       );
       Fluttertoast.showToast(msg: "Login success");
     } else {

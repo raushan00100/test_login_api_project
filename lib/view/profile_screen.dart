@@ -6,7 +6,6 @@ import 'package:test_login_api_project/view/weather_screen.dart';
 import '../view_model/auth_provider.dart';
 import 'login_screen.dart';
 
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -43,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> logoutUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-    var provider = Provider.of<AuthProvider>(context,listen: false);
+    var provider = Provider.of<AuthProvider>(context, listen: false);
     provider.emailController.clear();
     provider.passwordController.clear();
     provider.firstNameController.clear();
@@ -57,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => const LoginScreen()),
-            (route) => false,
+        (route) => false,
       );
       ScaffoldMessenger.of(
         context,
@@ -123,7 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text("Number: $number", style: const TextStyle(fontSize: 18)),
             SizedBox(height: 10),
             Text("Address: $address", style: const TextStyle(fontSize: 18)),
-            SizedBox(height: 80,),
+            SizedBox(height: 80),
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -131,9 +130,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 80, vertical: 12),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => WeatherScreen(),));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WeatherScreen()),
+                  );
                 },
-                child: Text("Show Weather", style: TextStyle(color: Colors.black)),
+                child: Text(
+                  "Show Weather",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ),
           ],

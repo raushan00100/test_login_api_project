@@ -34,89 +34,89 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ? const Center(child: CircularProgressIndicator())
           : provider.weather == null
           ? Center(
-        child: ElevatedButton(
-          onPressed: () => provider.fetchWeather(),
-          child: const Text("Get Weather"),
-        ),
-      )
+              child: ElevatedButton(
+                onPressed: () => provider.fetchWeather(),
+                child: const Text("Get Weather"),
+              ),
+            )
           : Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            Text(
-              "Location: ${provider.weather!.name}",
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+              padding: const EdgeInsets.all(16.0),
+              child: ListView(
+                children: [
+                  Text(
+                    "Location: ${provider.weather!.name}",
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    "Weather: ${provider.weather!.weather?[0].main ?? "N/A"}",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    "Description: ${provider.weather!.weather?[0].description ?? "N/A"}",
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Text(
+                            "Temperature: ${provider.weather!.main?.temp} °C",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.feelsLike} °C",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.tempMin} °C",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.tempMax} °C",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.pressure} °C",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.humidity} °C",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.seaLevel ?? "__"}",
+                          ),
+                          Text(
+                            "Temperature: ${provider.weather!.main?.grndLevel ?? "__"}",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text("Visibility: ${provider.weather!.visibility ?? "__"} m"),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Text(
+                            "Wind Speed: ${provider.weather!.wind?.speed ?? "__"} m/s",
+                          ),
+                          Text(
+                            "Wind Speed: ${provider.weather!.wind?.deg ?? "__"} m/s",
+                          ),
+                          Text(
+                            "Wind Speed: ${provider.weather!.wind?.gust ?? "__"} m/s",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 16),
-            Text(
-              "Weather: ${provider.weather!.weather?[0].main ?? "N/A"}",
-              style: const TextStyle(fontSize: 20),
-            ),
-            Text(
-              "Description: ${provider.weather!.weather?[0].description ?? "N/A"}",
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                child: Column(
-                  children: [
-                    Text(
-                      "Temperature: ${provider.weather!.main?.temp} °C",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.feelsLike} °C",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.tempMin} °C",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.tempMax} °C",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.pressure} °C",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.humidity} °C",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.seaLevel ?? "__"}",
-                    ),
-                    Text(
-                      "Temperature: ${provider.weather!.main?.grndLevel ?? "__"}",
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            Text("Visibility: ${provider.weather!.visibility ?? "__"} m"),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                child: Column(
-                  children: [
-                    Text(
-                      "Wind Speed: ${provider.weather!.wind?.speed ?? "__"} m/s",
-                    ),
-                    Text(
-                      "Wind Speed: ${provider.weather!.wind?.deg ?? "__"} m/s",
-                    ),
-                    Text(
-                      "Wind Speed: ${provider.weather!.wind?.gust ?? "__"} m/s",
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

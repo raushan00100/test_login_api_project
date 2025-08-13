@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test_login_api_project/view/weather_screen.dart';
 
 import '../view_model/auth_provider.dart';
 import 'login_screen.dart';
@@ -122,6 +123,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text("Number: $number", style: const TextStyle(fontSize: 18)),
             SizedBox(height: 10),
             Text("Address: $address", style: const TextStyle(fontSize: 18)),
+            SizedBox(height: 80,),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.cyan,
+                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 12),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => WeatherScreen(),));
+                },
+                child: Text("Show Weather", style: TextStyle(color: Colors.black)),
+              ),
+            ),
           ],
         ),
       ),

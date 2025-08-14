@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:test_login_api_project/model/login_model.dart';
 
 import '../model/signup_model.dart';
 
@@ -40,14 +41,14 @@ class ApiService {
     }
   }
 
-  Future<SignUpModel?> login(String email, String password) async {
+  Future<LoginModel?> login(String email, String password) async {
     var response = await http.post(
       Uri.parse("https://edugaondev.com/firebase-api-main/api/login"),
       body: {"email": email, "password": password},
     );
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
-      var data = SignUpModel.fromJson(json);
+      var data = LoginModel.fromJson(json);
       return data;
     }
   }
